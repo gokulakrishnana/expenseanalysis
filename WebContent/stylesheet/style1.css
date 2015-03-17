@@ -1,0 +1,29 @@
+.uploadtable{
+	border-style:solid;
+	border-collapse:collapse;
+	border-color: #7E814F;
+	border-width: 1px;
+	color:#7E814F;
+	white-space: nowrap;
+}
+.headingupload{
+	border-style:solid;
+	border-collapse:collapse;
+	border-color: #7E814F;
+	border-width: 1px;
+	text-decoration: none;
+	font-style: italic;
+	font-weight: bold;
+	background-color: #BEC185;
+}
+
+.alalysistable{
+	border-style:solid;
+	border-collapse:collapse;
+	border-color: #7E814F;
+	border-width: 1px;
+	color:#7E814F;
+	white-space: nowrap;
+	width:200px;
+}
+
