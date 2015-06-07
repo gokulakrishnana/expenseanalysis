@@ -12,49 +12,29 @@
 	href="stylesheets/jquery-ui.structure.css" />
 <link rel="stylesheet" type="text/css"
 	href="stylesheets/jquery-ui.theme.css" />
+	
 <link rel="stylesheet" type="text/css" href="stylesheet/weblayout.css" />
-<link rel="stylesheet" type="text/css" href="stylesheet/style1.css">
-<style>
-td {
-	width: 100%;
-	border-style: solid;
-	border-collapse: collapse;
-	border-color: #7E814F;
-	border-width: 1px;
-	color: #7E814F;
-	padding-left: 25px;
-	padding-right: 25px;
-}
+<link rel="stylesheet" type="text/css" href="stylesheet/button-style.css">
+<link rel="stylesheet" type="text/css" href="stylesheet/tables-style.css">
 
-td.heading {
-	border-style: solid;
-	border-collapse: collapse;
-	border-color: #7E814F;
-	border-width: 1px;
-	background-color: #BEC185;
-	color: #7E814F;
-	white-space: nowrap;
-	text-align: center;
-}
-</style>
 </head>
 <body>
 	<%
 		int UpdateCount = (Integer) session.getAttribute("UpdateCount");
 		int DeleteCount = (Integer) session.getAttribute("DeleteCount");
 	%>
-	<div id="header">Edit Response Screen</div>
-	<div id="nav">
-		<a href="index.jsp" class="navigationbar"> Home</a>
-	</div>
+<div id="nav1"> 
+<a href="index.jsp"> Home</a>
+</div>
+
 	<div id="section">
 		<center>
-			<Table class="alalysistable">
+			<Table class="editiresponsetable">
 				<tr>
-					<td class="heading">Rows Updated Count</td>
-					<td><%=UpdateCount%></td>
-					<td class="heading">Rows Deleted Count</td>
-					<td><%=DeleteCount%></td>
+					<td class="editiresponsetdheading">Rows Updated Count</td>
+					<td class="editiresponsetd"><%=UpdateCount%></td>
+					<td class="editiresponsetdheading">Rows Deleted Count</td>
+					<td class="editiresponsetd"><%=DeleteCount%></td>
 				</tr>
 			</Table>
 		</center>

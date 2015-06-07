@@ -9,48 +9,52 @@
 </head>
 <script type="text/javascript" src="scripts/jquery-2.1.3.js"></script>
 <script type="text/javascript" src="scripts/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="stylesheet/style1.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.css"/>
-<link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.structure.css"/>
-<link rel="stylesheet" type="text/css" href="stylesheets/jquery-ui.theme.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheet/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheet/jquery-ui.structure.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheet/jquery-ui.theme.css"/>
 <link rel="stylesheet" type="text/css" href="stylesheet/weblayout.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheet/tables-style.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheet/button-style.css"/>
 <style>
-.hometable {
-	border-style: solid;
-	border-collapse: collapse;
-	border-color: #000000;
-	border-width: 1px;
-	text-align: center;
-	color:#7E814F;
-	
-}
-fieldset { 
-    display: table;
-    margin-top:20px;
-    margin-left:30px;
-    margin-right:50px;
-    border-style: solid;
-	border-collapse: collapse;
-	border-color: #7E814F;
-	border-width: 2px;
-	background-color: #BEC185;
-}
 
 td {
 	border-style: solid;
 	border-collapse: collapse;
-	border-color: #7E814F;
-	border-width: 1px;
+	border-color: #A9F5BC;
+	border-width: 0px;
 	text-align: center;
 }
+
+fieldset { 
+    display: table;
+    margin-top:20px;
+    margin-left:5%;
+    margin-right:50px;
+	border-collapse: collapse;
+	border-color: #FFFFFF;
+	border-width: 0px; 
+	border-style:groove;
+	border-corner-shape:curve;
+	border-radius:18px;
+	background-color: #A9E2F0;
+	width: 50%;
+	font-size:medium;
+	font-size-adjust: inherit;	
+} 
+
+.fldsetpara{
+font-size: 20px;
+font-weight: bold;
+}
+
 P{
-color:#7E814F;
+color:#FFFFFF;
 }
 </style>
 <body>
 <script>
 $(document).ready(function(){
-	$("#stdate,#enddate,#anstdate,#anenddate").datepicker({
+	$("#stdate,#enddate,#anstdate,#anenddate,#datepicker").datepicker({
 		changeMonth: true,changeYear: true,dateFormat:"yy-mm-dd"
 	});
 	$("#Upload").click(function (e){
@@ -73,22 +77,24 @@ $(document).ready(function(){
 
 })
 </script>
-<div id="header">Welcome! </div>
-<div id="nav">
-<a href="index.jsp" class="navigationbar"> Home</a>
+<!-- <div id="header">Welcome! </div> -->
+<div id="nav1"> 
+<a href="index.jsp"> Home</a>
+<a href="#"> About</a>
+<a href="#"> Contact US</a>
 </div>
 <div id="section">
 		<fieldset>
-		<p> Upload File </p>
+		<p class="fldsetpara"> Upload </p>
 			<form method="post" action="FileUpload" enctype="multipart/form-data">
 				<table class="hometable">
 
 					<tr>
 						<td>Select file to upload:</td>
-						<td><input type="file" name="file" id="file" /></td>
+						<td><input class="btnClass1" type="file" name="file" id="file" /></td>
 					</tr>
 					<tr>
-						<td colspan=2><input id="Upload" type="submit" value="Upload" /></td>
+						<td colspan=2><input class="btnClass1" id="Upload" type="submit" value="Upload" /></td>
 					</tr>
 
 				</table>
@@ -96,7 +102,7 @@ $(document).ready(function(){
 		</fieldset>
 
 		<fieldset>
-		<p> Select Date range to Retrieve and Edit Category type. </p>
+		<p class="fldsetpara"> Edit and Delete </p>
 			<form id="editform" name="editform" method="post" action="Editdata">
 				<table class="hometable">
 					<tr>
@@ -108,14 +114,14 @@ $(document).ready(function(){
 						<td><input type="text" name="enddate" id="enddate"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="Retrieve"></td>
+						<td colspan="2"><input class="btnClass1" type="submit" value="Retrieve"></td>
 					</tr>
 				</table>
 			</form>
 		</fieldset>
 		
 		<fieldset>
-			<p> Select Date range to Retrieve and Analytics . </p>
+			<p class="fldsetpara"> Analytics</p>
 			<form id="dataanalysis" name="dataanalysis" method="post" action="DataAnalysis">
 				<table class="hometable">
 					<tr>
@@ -127,15 +133,14 @@ $(document).ready(function(){
 						<td><input type="text" name="anenddate" id="anenddate"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" id="Analyse" value="Analyse"></td>
+						<td colspan="2"><input class="btnClass1" type="submit" id="Analyse" value="Analyse"></td>
 					</tr>
 				</table>
 			</form>
 		</fieldset>
 
-	</div>
-	
-<div id="arti"></div>
+</div>
 <div id="end">Expense Analysis System</div>	
+
 </body>
 </html>

@@ -780,6 +780,8 @@
         s._highlightedPoint = pidx;
         plot.plugins.pieRenderer.highlightedSeriesIndex = sidx;
         s.renderer.drawSlice.call(s, canvas._ctx, s._sliceAngles[pidx][0], s._sliceAngles[pidx][1], s.highlightColorGenerator.get(pidx), false);
+        var showchart = switch3(pidx);
+
     }
     
     function unhighlight (plot) {
@@ -789,7 +791,7 @@
             plot.series[i]._highlightedPoint = null;
         }
         plot.plugins.pieRenderer.highlightedSeriesIndex = null;
-        plot.target.trigger('jqplotDataUnhighlight');
+        plot.target.trigger('jqplotDataUnhighlight'); 
     }
  
     function handleMove(ev, gridpos, datapos, neighbor, plot) {

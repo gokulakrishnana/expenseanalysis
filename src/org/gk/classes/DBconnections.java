@@ -87,11 +87,14 @@ public class DBconnections {
 		conn.close();
 	}
 	
+	// Analysis Related queries 
+	
 	public HashMap<String, Double> getTotalIncomeExpense(String stDate, String endDate) throws SQLException{
 		HashMap<String, Double> db_IncomeExpense = new HashMap<String, Double>();
-		String IncomeExpense = "select sum(AMT),TYPE from transactiondetails "
+		String IncomeExpense = "select sum(AMT) as amount,TYPE from transactiondetails "
 				+ " where TRAN_DT between ? AND ? "
-				+ "group by TYPE";
+				+ "group by TYPE "
+				+ " order by amount";
 		java.sql.PreparedStatement prpstmIncomeExpense = conn.prepareStatement(IncomeExpense);
 		
 		prpstmIncomeExpense.setString(1,stDate);
@@ -106,9 +109,10 @@ public class DBconnections {
 	
 	public ArrayList<String> getTotalIncomeByCatg(String stDate, String endDate) throws SQLException{
 		ArrayList<String> IncomeByCatg =  new ArrayList<String>();
-		String queryIncomeByCatg = "select sum(AMT),CATEGORY from transactiondetails "
+		String queryIncomeByCatg = "select sum(AMT) as amount ,CATEGORY from transactiondetails "
 				+ " where TRAN_DT between ? AND ?  and TYPE= \"CR\" "
-				+ "group by CATEGORY";
+				+ "group by CATEGORY"
+				+ " order by amount desc";
 		java.sql.PreparedStatement prpstmIncomeByCatg = conn.prepareStatement(queryIncomeByCatg);
 		
 		prpstmIncomeByCatg.setString(1,stDate);
@@ -124,13 +128,14 @@ public class DBconnections {
 
 	public ArrayList<String> getTotalExpenseByCatg(String stDate, String endDate) throws SQLException{
 		 ArrayList<String> ExpenseByCatg = new  ArrayList<String> ();
-		String queryExpenseByCatg = "select sum(AMT),CATEGORY from transactiondetails "
+		String queryExpenseByCatg = "select sum(AMT) as amount,CATEGORY from transactiondetails "
 				+ " where TRAN_DT between ? AND ?  and TYPE= \"DB\" "
-				+ "group by CATEGORY";
+				+ "group by CATEGORY"
+		        + " order by amount desc";
 		java.sql.PreparedStatement prpstmExpenseByCatg = conn.prepareStatement(queryExpenseByCatg);
 		
 		prpstmExpenseByCatg.setString(1,stDate);
-		prpstmExpenseByCatg.setString(2, endDate);
+		prpstmExpenseByCatg.setString(2,endDate);
 		ResultSet rs = (ResultSet) prpstmExpenseByCatg.executeQuery();
 				
 		while(rs.next()){
@@ -140,6 +145,25 @@ public class DBconnections {
 		return ExpenseByCatg;
 	}
 
+	public ArrayList<String> getAllRecsSortByCatg(String stDate, String endDate) throws SQLException {
+		
+		ArrayList<String> ExpenseSortByCatg = new ArrayList<String>();
+		String queryExpenseSortByCatg = "select CATEGORY,TRAN_DT,AMT from transactiondetails "
+				+ " where TRAN_DT between ? AND ? " 
+				+ " order by CATEGORY";
+		
+		java.sql.PreparedStatement prpstmExpenseSortByCatg = conn.prepareStatement(queryExpenseSortByCatg);
+		prpstmExpenseSortByCatg.setString(1,stDate);
+		prpstmExpenseSortByCatg.setString(2,endDate);
+		ResultSet rs = (ResultSet) prpstmExpenseSortByCatg.executeQuery();
+		while(rs.next()){
+			//System.out.println("Expense  : " + rs.getString(2)+"::::" + rs.getDouble(1));
+			ExpenseSortByCatg.add(rs.getString(1) + "," + rs.getString(2) + "," + rs.getDouble(3));			
+		}
+		return ExpenseSortByCatg;
+		
+	}
+	// Delete and Updates
 	public int delrecords(java.util.List<String> temp_List) throws SQLException{
 		int rowsaffected = 0;
 		String queryDelRecords = "delete FROM transactiondetails "

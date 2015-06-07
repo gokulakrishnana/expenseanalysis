@@ -7,7 +7,9 @@
 <title>Edit!</title>
 <script type="text/javascript" src="scripts/jquery-2.1.3.js"></script>
 <link rel="stylesheet" type="text/css" href="stylesheet/weblayout.css"/>
-<link rel="stylesheet" type="text/css" href="stylesheet/style1.css">
+<link rel="stylesheet" type="text/css" href="stylesheet/tables-style.css">
+<link rel="stylesheet" type="text/css" href="stylesheet/button-style.css"/>
+
 </head>
 <body>
 
@@ -30,8 +32,8 @@ function delfunction(X){
 	document.getElementById(selcategoryid).value = "MISC";
 }
 </script>
-<div id="header">Edit Data Screen </div>
-<div id="nav"><a href="index.jsp" class="navigationbar"> Home</a></div>
+<div id="nav1"><a href="index.jsp"> Home</a></div>
+
 <div id="section">
 
 <p id="demo"></p>
@@ -43,7 +45,7 @@ function delfunction(X){
 		<table class="uploadtable">
 			<tr>
 				<td class="headingupload">Del</td>
-<!-- 				<td class="headingupload">Key</td> -->
+<!-- 		    <td class="headingupload">Key</td> -->
 				<td class="headingupload">Value Date</td>
 				<td class="headingupload">Transaction Date</td>
 				<td class="headingupload">Remarks</td>
@@ -81,13 +83,12 @@ function delfunction(X){
 			</tr>
 			<%}%>
 		<tr>
-		<td class="uploadtable" colspan="7" align="center"> <input type="submit" value="Submit"></td>
+		<td class="uploadtable" colspan="7" align="center"> <input class="btnClass1" type="submit" value="Submit"></td>
 		</tr>	
 		</table>
 		
 </form>
 </div>		
-<div id="arti">Check for Deleting and Select Category for Updating. Then submit the form. </div>
 <div id="end">Expense Analysis System</div>
 </body>
 </html>

@@ -28,6 +28,7 @@ public class DataAnalysis extends HttpServlet {
 	HashMap<String, Double> db_IncomeExpense = new HashMap<String, Double>();
 	ArrayList<String> db_IncomeByCatg = new ArrayList<String>();
 	ArrayList<String> db_ExpenseByCatg = new ArrayList<String>();
+	ArrayList<String> db_AllRecsOrdCatg = new ArrayList<String>();
 	
 	
 	
@@ -43,6 +44,7 @@ public class DataAnalysis extends HttpServlet {
 		getconnection();
 		gettotalincomeexpense();
 		getincomeexpensebycatg();		
+		getAllRecOrderByCatg();
 		try {
 			dbactions.closeConnection();
 		} catch (SQLException e) {
@@ -53,6 +55,7 @@ public class DataAnalysis extends HttpServlet {
 		request.getSession().setAttribute("IncomeExpense", db_IncomeExpense);
 		request.getSession().setAttribute("IncomeByCatg", db_IncomeByCatg);
 		request.getSession().setAttribute("ExpenseByCatg", db_ExpenseByCatg);		
+		request.getSession().setAttribute("ExpenseOrdCatg", db_AllRecsOrdCatg);
 
 		//Request Dispatcher	
 		RequestDispatcher dispatch = request.getRequestDispatcher("Analysis.jsp");
@@ -93,6 +96,15 @@ public class DataAnalysis extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public void getAllRecOrderByCatg(){
+		try{
+			db_AllRecsOrdCatg = dbactions.getAllRecsSortByCatg(StDate, EndDate);
+		} catch (SQLException e) {
+			System.out.println("Error while trying to get All Rec Order by Category from DataAnalysis");
+			e.printStackTrace();
+		}
 	}
 }
 
